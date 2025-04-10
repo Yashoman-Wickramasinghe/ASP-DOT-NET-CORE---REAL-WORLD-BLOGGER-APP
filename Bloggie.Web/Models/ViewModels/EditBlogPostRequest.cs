@@ -1,6 +1,9 @@
-﻿namespace Bloggie.Web.Models.Domain
+﻿using Bloggie.Web.Models.Domain;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace Bloggie.Web.Models.ViewModels
 {
-    public class BlogPost
+    public class EditBlogPostRequest
     {
         public Guid Id { get; set; }
         public string Heading { get; set; }
@@ -13,7 +16,10 @@
         public string Author { get; set; }
         public bool Visible { get; set; }
 
-        //This BlogPost has multiple Tags -Navigation Property
-        public ICollection<Tag> Tags { get; set; }
+        // Display the Tags
+        public IEnumerable<SelectListItem> Tags { get; set; }
+
+        // Collect the Tags 
+        public string[] SelectedTags { get; set; } = Array.Empty<string>();
     }
 }
